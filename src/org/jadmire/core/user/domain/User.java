@@ -3,10 +3,12 @@ package org.jadmire.core.user.domain;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @javax.persistence.Table(name = "tbl_users", schema = "", catalog = "jadmire")
 @Entity
-public class User {
+public class User implements Serializable, Comparable<User> {
+
     private int id;
 
     @javax.persistence.Column(name = "id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -77,5 +79,10 @@ public class User {
         result = 31 * result + (userEmail != null ? userEmail.hashCode() : 0);
         result = 31 * result + (userPassword != null ? userPassword.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return (this.id > o.id) ? - 1 : (this.id < o.id) ? 1 : 0;
     }
 }
