@@ -15,7 +15,7 @@ public class HibernateUtil {
         }
     }
 
-    public static void buildSessionFactory(){
+    private static void buildSessionFactory(){
         mSessionFactory = new Configuration().configure().buildSessionFactory();
     }
 
