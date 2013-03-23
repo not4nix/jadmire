@@ -47,7 +47,7 @@ public class UserDAOImpl implements UserDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<User> readAll() throws HibernateException {
+    public List<User> readAll() {
         List<User> userList = new CopyOnWriteArrayList<User>();
         mSession = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -92,7 +92,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void update(Integer entityId, String entityName) throws HibernateException {
+    public void update(Integer entityId, String entityName){
         mSession = HibernateUtil.getSessionFactory().openSession();
         try {
             mTransaction = mSession.beginTransaction();
@@ -111,7 +111,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public Integer save(String name) throws HibernateException {
+    public Integer save(String name){
         mSession = HibernateUtil.getSessionFactory().openSession();
         Integer userId = null;
         try {
